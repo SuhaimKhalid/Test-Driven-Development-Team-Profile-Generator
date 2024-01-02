@@ -219,7 +219,10 @@ function buildTeam() {
     if (!fs.existsSync(OUTPUT_DIR)) {
         fs.mkdirSync(OUTPUT_DIR);
     }
-    fs.writeFileSync(outputPath, render(teamMembers), 'utf-8');
+    fs.writeFileSync(outputPath, render(teamMembers), 'utf-8', (err) => {
+        // If any error display error otherwise display console
+        if (err) throw err;
+        console.log('Team built successfully!')});
 }
 
 initApp();
