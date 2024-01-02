@@ -213,4 +213,13 @@ function addIntern() {
     });
 }
 
+// Function to build Team in output folder
+function buildTeam() {
+    // Check if the OUTPUT_DIR exists, not the outputPath
+    if (!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR);
+    }
+    fs.writeFileSync(outputPath, render(teamMembers), 'utf-8');
+}
+
 initApp();
